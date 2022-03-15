@@ -15,40 +15,40 @@ class GenCode(basicListener):
         self.x+=1
         self.list.append(self.x)
         self.list2.append(self.x)
-        print("li $v" + str(self.x) + ", " + ctx.Number().getText())
+        print("li $" + str(self.x) + ", " + ctx.Number().getText())
     
     def exitText(self, ctx: basicParser.TextContext):
         self.x+=1
         self.list.append(self.x)
         self.list2.append(self.x)
-        print("lw $v" + str(self.x) + ", " + ctx.Text().getText())
+        print("lw $" + str(self.x) + ", " + ctx.Text().getText())
 
     def exitAddition(self, ctx:basicParser.AdditionContext):
-        print("Added $v" + str((self.x)) +", " + "$v" + str(self.list2.pop()) + ", " + "$v" + str(self.list2.pop()))
+        print("Added $" + str((self.x)) +", " + "$" + str(self.list2.pop()) + ", " + "$" + str(self.list2.pop()))
 
     def exitSubstract(self, ctx: basicParser.SubtractContext):
-        print("Subtracted $v" + str((self.x)) +", " + "$v" + str(self.list2.pop()) + ", " + "$v" + str(self.list2.pop()))
+        print("Subtracted $" + str((self.x)) +", " + "$" + str(self.list2.pop()) + ", " + "$" + str(self.list2.pop()))
 
     def exitMultiply(self, ctx: basicParser.MultiplyContext):
-        print("Multiplied $v" + str((self.x)) +", " + "$v" + str(self.list2.pop()) + ", " + "$v" + str(self.list2.pop()))
+        print("Multiplied $" + str((self.x)) +", " + "$" + str(self.list2.pop()) + ", " + "$" + str(self.list2.pop()))
 
     def exitDivide(self, ctx: basicParser.DivideContext):
-        print("Divided $v" + str((self.x)) +", " + "$v" + str(self.list2.pop()) + ", " + "$v" + str(self.list2.pop()))
+        print("Divided $" + str((self.x)) +", " + "$" + str(self.list2.pop()) + ", " + "$" + str(self.list2.pop()))
 
     def exitLess(self, ctx:basicParser.LessContext):
-        print("lower $v" + str((self.x)) +", " + "$v" + str(self.list2.pop(1)) + ", " + "$v" + str(self.list2.pop()))
+        print("lower $" + str((self.x)) +", " + "$" + str(self.list2.pop(1)) + ", " + "$" + str(self.list2.pop()))
     
     def exitMore(self, ctx:basicParser.MoreContext):
-        print("greater $v" + str((self.x)) +", " + "$v" + str(self.list2.pop(1)) + ", " + "$v" + str(self.list2.pop()))
+        print("greater $" + str((self.x)) +", " + "$" + str(self.list2.pop(1)) + ", " + "$" + str(self.list2.pop()))
 
     def exitAssign(self, ctx:basicParser.AssignContext):
-        print("Assigned $v" + str((self.x)) +", " + "$v" + str(self.list2.pop()) + ", " + "$v" + str(self.list2.pop()))
+        print("Assigned $" + str((self.x)) +", " + "$" + str(self.list2.pop()) + ", " + "$" + str(self.list2.pop()))
 
     def exitIf(self, ctx:basicParser.IfelseContext):
-        print("bequals $v" + str(self.list.pop(0)) +", $v" + str(self.list.pop(0)) + ", ELSE")
+        print("bequals $" + str(self.list.pop(0)) +", $" + str(self.list.pop(0)) + ", ELSE")
 
     def exitIfelse(self, ctx: basicParser.IfContext):
-        print("bequals $v" + str(self.list.pop(0)) +", $v" + str(self.list.pop(0)))
+        print("bequals $" + str(self.list.pop(0)) +", $" + str(self.list.pop(0)))
 
     def exitPrint(self, ctx:basicParser.PrintContext):
         print("syscall")
@@ -61,13 +61,13 @@ class GenCode(basicListener):
         self.x+=1
         self.list.append(self.x)
         self.list2.append(self.x)
-        print("sw $v" + str(self.x) + ", " + ctx.Text().getText())
+        print("sw $" + str(self.x) + ", " + ctx.Text().getText())
 
     def exitDeclaracion(self, ctx:basicParser.DeclareNumContext):
         self.x+=1
         self.list.append(self.x)
         self.list2.append(self.x)
-        print("sw $v" + str(self.x) + ", " + ctx.Number().getText())
+        print("sw $" + str(self.x) + ", " + ctx.Number().getText())
 
 
 
